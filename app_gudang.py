@@ -94,3 +94,20 @@ with kolom_kiri:
 with kolom_kanan:
     st.subheader("📊 Grafik Stok Barang")
     st.bar_chart(data_gudang_terbaru.set_index('nama_barang')['stok'])
+
+    # ==========================================
+# 5. FITUR EKSPOR (DOWNLOAD KE EXCEL/CSV)
+# ==========================================
+st.markdown("---")
+st.subheader("🖨️ Cetak Laporan")
+
+# Pandas menyulap tabel memori menjadi format CSV (format universal yang disukai Excel)
+data_csv = data_gudang_terbaru.to_csv(index=False).encode('utf-8')
+
+# Streamlit merakit tombol fisik di layar web untuk mengunduhnya
+st.download_button(
+    label="📥 Download Data Gudang (Excel/CSV)",
+    data=data_csv,
+    file_name="Laporan_Stok_Gudang.csv",
+    mime="text/csv"
+)
