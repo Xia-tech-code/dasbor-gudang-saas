@@ -3,6 +3,36 @@ import pandas as pd
 import sqlite3
 
 st.set_page_config(page_title="SaaS Dasbor Gudang", layout="wide")
+import streamlit as st
+import pandas as pd
+import sqlite3
+
+# 1. Konfigurasi awal halaman web
+st.set_page_config(page_title="SaaS Dasbor Gudang", layout="wide")
+
+# ==========================================
+# FITUR BARU: SATPAM DIGITAL (LOGIN)
+# ==========================================
+st.title("🔒 Portal Akses Karyawan")
+password_input = st.text_input("Masukkan Password Rahasia:", type="password")
+
+# Cek apakah password salah
+if password_input != "bosgudang123":
+    # Jika salah (dan kotak tidak kosong), tampilkan pesan error
+    if password_input != "":
+        st.error("Akses Ditolak! Password salah.")
+    
+    # PERINTAH MUTLAK: Berhenti di sini! Jangan muat dasbor di bawahnya.
+    st.stop()
+
+# Jika password benar, layar akan lanjut memuat kode di bawah ini:
+st.success("✅ Akses Diterima! Memuat dasbor...")
+st.markdown("---")
+# ==========================================
+
+
+
+# ... dan seterusnya sampai bawah ...
 st.title("📦 Dasbor Manajemen Gudang (Versi Alpha)")
 st.markdown("---")
 
